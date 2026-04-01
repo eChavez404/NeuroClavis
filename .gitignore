@@ -1,3 +1,17 @@
+# Ambientes Virtuais e Variáveis
 .env
-.venv
+.venv/
+env/
+venv/
+
+# Banco de Dados Local
 db.sqlite3
+
+# Arquivos Compilados do Python (Cache)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Outros arquivos temporários
+*.log
+.DS_Store
