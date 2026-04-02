@@ -8,7 +8,6 @@
 ![Django](https://img.shields.io/badge/Django-4.2+-092E20?style=for-the-badge&logo=django)
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python)
 ![OpenAI](https://img.shields.io/badge/AI_Co--Pilot-GPT--4o--mini-412991?style=for-the-badge&logo=openai)
-![Status](https://img.shields.io/badge/Status-MVP_Completo-success?style=for-the-badge)
 
 *Uma plataforma de Digital Therapeutics (DTx) que transforma avaliações neuropsicológicas em experiências lúdicas, utilizando telemetria invisível e Inteligência Artificial para gerar laudos clínicos baseados em evidências.*
 
