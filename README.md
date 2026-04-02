@@ -1,98 +1,93 @@
-# 🧠 Neuroclavis
+<div align="center">
+  
+# 🧠 NeuroClavis
+**As chaves digitais para decodificar a mente da criança.**
 
-**Neuroclavis** é uma plataforma inovadora de *Digital Therapeutics (DTx)* focada na avaliação neuropsicológica e psicopedagógica infantil. O ecossistema une a capacidade de engajamento dos videogames (Frontend), a precisão matemática da telemetria digital (Backend) e o poder de síntese da Inteligência Artificial Generativa para auxiliar profissionais de saúde no rastreio de transtornos do neurodesenvolvimento (como TDAH, TEA, e Transtornos Motores).
+![Unity](https://img.shields.io/badge/Unity-6-black?style=for-the-badge&logo=unity)
+![C#](https://img.shields.io/badge/C%23-Arquitetura_Orientada_a_Eventos-239120?style=for-the-badge&logo=c-sharp)
+![Django](https://img.shields.io/badge/Django-4.2+-092E20?style=for-the-badge&logo=django)
+![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python)
+![OpenAI](https://img.shields.io/badge/AI_Co--Pilot-GPT--4o--mini-412991?style=for-the-badge&logo=openai)
+![Status](https://img.shields.io/badge/Status-MVP_Completo-success?style=for-the-badge)
 
-Atuando como um "microscópio comportamental", o jogo coleta dados invisíveis a olho nu e os traduz em relatórios clínicos preliminares baseados em evidências.
+*Uma plataforma de Digital Therapeutics (DTx) que transforma avaliações neuropsicológicas em experiências lúdicas, utilizando telemetria invisível e Inteligência Artificial para gerar laudos clínicos baseados em evidências.*
 
----
-
-## 🚀 Principais Funcionalidades
-
-- **Telemetria de Alta Precisão:** Coleta dados comportamentais em milissegundos durante a gameplay, sem interromper o estado de *flow* do paciente (mecânicas de *Soft Fail*).
-- **AI Co-Pilot Clínico:** Integração assíncrona com LLMs (GPT-4o-mini via GitHub Models) configurados com *prompts* de alto rigor científico (baseados no DSM-5-TR e teorias de Funções Executivas) para gerar uma pré-análise clínica da sessão.
-- **Painel Administrativo (B2B):** Interface web segura para médicos e psicopedagogos gerenciarem pacientes, cadastrarem diagnósticos formais e acessarem o histórico de laudos gerados pela IA.
-- **Arquitetura Segura:** Proteção de rotas via JSON Web Tokens (JWT) e anonimização de pacientes utilizando UUIDs, garantindo conformidade com leis de proteção de dados de saúde (LGPD).
-
----
-
-## 🏗️ Arquitetura do Sistema
-
-O projeto é dividido em três grandes camadas:
-
-1. **Frontend (O Jogo - Unity 2D / C#):** 
-   Interface interativa onde a criança realiza tarefas visuoespaciais. Responsável por rodar a física do jogo, registrar as métricas comportamentais invisíveis e enviar o *payload* final via REST API.
-2. **Backend (A API - Python / Django REST Framework):** 
-   O servidor central. Gerencia a autenticação, valida a integridade dos dados, persiste o histórico no banco de dados e serve o Painel Admin.
-3. **Processamento de Linguagem Natural (IA):** 
-   Módulo isolado (`services.py`) que processa as métricas matemáticas, cruza as variáveis de acordo com a literatura neurocientífica e devolve um texto estruturado para a API.
+</div>
 
 ---
 
-## 📊 Métricas Coletadas (O *Payload*)
+## 🎯 A Visão: Por que o NeuroClavis existe?
+Diagnósticos de transtornos do neurodesenvolvimento (como **TDAH, TEA e Transtornos Motores**) dependem de avaliações clínicas que muitas vezes geram *ansiedade de performance* na criança. Testes de papel e caneta são frios e falham em capturar o comportamento natural do paciente.
 
-A ponte entre a Engenharia de Software e a Neurociência. O jogo exporta um JSON contendo:
+**A nossa solução:** Criamos um ecossistema onde a criança apenas joga. O que parece ser um simples quebra-cabeça 2D esconde um **motor de telemetria de alta precisão**. Capturamos cada milissegundo de hesitação, cada movimento de frustração e cada erro motor. Esses dados são enviados para um backend robusto onde nossa **Inteligência Artificial (Co-Piloto Clínico)** analisa os padrões e entrega um relatório pré-clínico detalhado nas mãos do profissional de saúde.
 
-| Variável Técnica | Representação Cognitiva / Clínica |
+---
+
+## 🚀 O Motor da Inovação (O que construímos)
+
+Nós não fizemos apenas um jogo ou um CRUD. Nós construímos uma ponte entre a física de um motor gráfico e a análise de dados de uma API.
+
+### 🎮 1. Game Design Focado em Psicologia (Frontend)
+- **Física Clínica (SmoothDamp):** A movimentação das peças não é rígida. Utilizamos interpolação matemática (`Vector3.SmoothDamp`) para que o objeto siga o mouse com fluidez. Isso garante que a medição da coordenação motora fina da criança seja pura, sem interferência de travamentos do jogo.
+- **Filosofia do "Soft Fail":** Telas de *Game Over* geram picos de cortisol e invalidam o teste. Se a criança erra o encaixe, a peça simplesmente retorna suavemente à origem. O jogo nunca a pune, mas o sistema registra a falha silenciosamente.
+- **Detecção Cirúrgica (Physics2D.OverlapBoxAll):** Rejeitamos colisões simples (*Triggers*) que podem falhar em movimentos rápidos. Construímos um sistema robusto de validação de área matemática usando máscaras de colisão (*LayerMasks*), garantindo 100% de precisão na detecção do sucesso ou erro.
+
+### 🧠 2. O Cérebro Invisível: Telemetria Clínica
+Enquanto a criança se diverte, nosso sistema `PlayerTelemetryCollector` avalia o comportamento em background, traduzindo ações do mouse em métricas psicológicas:
+
+| Ação no Jogo (Raw Data) | O que a IA interpreta (Marcador Clínico) |
 | :--- | :--- |
-| `tempo_primeira_acao` | **Latência de Resposta:** Processamento visual inicial e iniciativa. |
-| `tempo_total` | **Vigilância:** Atenção sustentada e foco na tarefa. |
-| `cliques_falsos` | **Controle Inibitório:** Marcador de impulsividade e hiperatividade. |
-| `solturas_erradas` | **Praxia Visuoespacial:** Planejamento espacial vs. Tentativa e Erro. |
-| `qtd_quedas` | **Destreza Fina:** Coordenação visomotora e mecânica de precisão. |
-| `tempo_segurando_peca` | **Ideação:** Tempo de planejamento de rota e tomada de decisão. |
-| `cliques_frustracao` | **Regulação Emocional:** Tolerância à frustração sob estresse. |
-| `tempo_congelado_pos_erro` | **Tempo Refratário:** Bloqueio cognitivo e recuperação pós-falha. |
+| **Tempo até o 1º Clique** | **Latência de Resposta:** Velocidade de processamento visual e ideação. |
+| **Cliques fora do alvo** | **Controle Inibitório:** Marcador primário de impulsividade (TDAH). |
+| **Cliques ultrarrápidos** | **Regulação Emocional:** Cliques repetitivos indicam frustração sob estresse. |
+| **Quedas da peça** | **Praxia Visuoespacial:** Falhas na coordenação visomotora fina. |
+| **Tempo de peça solta** | **Tempo Refratário:** Bloqueio cognitivo e tempo de recuperação pós-erro. |
+
+### 🤖 3. Inteligência Artificial Generativa (Backend)
+O backend não apenas salva os dados no banco. Ele utiliza o modelo **GPT-4o-mini** (via GitHub Models/OpenAI SDK) atuando como um *Co-Piloto*. A IA recebe o JSON da partida e processa os dados sob um rigoroso prompt de engenharia médica, devolvendo um laudo em linguagem natural com hipóteses clínicas para guiar o médico.
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 📐 Engenharia de Software Avançada (Design Patterns)
 
-**Motor Gráfico:**
-- Unity (C#)
-- Sistema nativo de Coroutines e `UnityWebRequest` para requisições assíncronas.
-- Arquitetura baseada em Singletons para *Managers* (Telemetria, Transição de Cena, API).
+O código foi desenhado para ser escalável, manutenível e blindado contra falhas, utilizando padrões da indústria:
 
-**Servidor & API:**
-- Python 3.11+
-- Django & Django REST Framework
-- Simple JWT (Autenticação)
-- SQLite (Desenvolvimento) / PostgreSQL (Produção)
+### No Unity (C#)
+*   **Data Transfer Objects (DTOs):** A engine da Unity possui uma estrutura de dados pesada (`GameObjects`, `Transforms`). Para não poluir nossa API, aplicamos o padrão **DTO** (`DjangoPayload`). Nós "traduzimos" e empacotamos apenas os números que importam em um objeto limpo antes de serializar em JSON. A API recebe dados puros, ignorando completamente a complexidade da engine.
+*   **Singleton Pattern & Persistência:** Sistemas vitais como a coleta de dados e o envio para a API (`TelemetryApiSender`) são protegidos pelo padrão Singleton com `DontDestroyOnLoad`, garantindo que nenhuma métrica clínica seja perdida durante transições de tela ou engasgos do sistema.
 
-**Inteligência Artificial:**
-- OpenAI Python SDK
-- GitHub Models / Azure AI Inference (`gpt-4o-mini`)
+### No Django (Python)
+*   **Service Layer Pattern (Skinny Views):** Evitamos o terrível anti-pattern de *Fat Views*. Toda a lógica pesada de integração com a API da OpenAI e regras de negócio foi extraída para a camada `services.py`. As Views atuam apenas como rotas limpas, seguras por JWT.
+*   **Custom User Model:** Modernizamos a autenticação. O Django padrão exige `username`, mas nós sobrescrevemos a arquitetura base (`AbstractBaseUser`) para utilizar **E-mail como chave primária**, o padrão real de sistemas SaaS B2B.
+*   **Provisionamento Automatizado (Data Migrations):** Pensando na *Developer Experience (DX)* e na avaliação da banca, injetamos um script de *Seed* diretamente na esteira de migrações (`migrations.RunPython`). **O banco de dados se auto-popula com as credenciais Master no momento em que é criado**, dispensando qualquer configuração manual via terminal.
 
 ---
 
-## ⚙️ Como Executar o Projeto Localmente
+## 🛠️ Como Avaliar o Projeto (Zero-Config Setup)
 
-### 1. Configurando o Backend (Django)
+Preparamos o projeto para ser avaliado da forma mais rápida e sem fricção possível.
 
+### 1. Levantando o Servidor (Backend)
+Abra o terminal na pasta `/backend`:
 ```bash
-# Clone o repositório
-git clone https://github.com/seu-usuario/neuroclavis.git
-cd neuroclavis/backend
+# 1. Crie e ative o ambiente virtual
+python -m venv .venv
+source .venv/Scripts/activate  # Windows
+# source .venv/bin/activate    # Mac/Linux
 
-# Crie e ative um ambiente virtual
-python -m venv venv
-source venv/Scripts/activate  # (No Windows)
-# source venv/bin/activate    # (No Linux/Mac)
-
-# Instale as dependências
+# 2. Instale as dependências
 pip install -r requirements.txt
 
-# Configure as variáveis de ambiente
-# Crie um arquivo .env na raiz do backend com as seguintes chaves:
-# SECRET_KEY=sua_chave_secreta_do_django
-# GITHUB_TOKEN=seu_token_do_github_models
+# 3. Configure as variáveis de ambiente (Crie o arquivo .env)
+# SECRET_KEY=sua_chave_aqui
+# GITHUB_TOKEN=seu_token_da_ia_aqui
+# DEBUG=True
+# ALLOWED_HOSTS=*
 
-# Execute as migrações do banco de dados
+# 4. Construa o banco e auto-provisione o sistema
 python manage.py migrate
 
-# Crie um superusuário para acessar o Painel Admin
-python manage.py createsuperuser
-
-# Inicie o servidor
+# 5. Inicie a API
 python manage.py runserver
-````
-*Neuroclavis - As chaves para entender a mente da criança.*
+
+<div align="center"> <i>"A tecnologia só cumpre seu papel quando se torna invisível e resolve problemas reais."</i><br> <b>Neuroclavis - 2026</b> </div> ```
