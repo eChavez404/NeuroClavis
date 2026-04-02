@@ -93,8 +93,6 @@ Não é necessário ter a Unity instalada para validar o projeto.
 1. Mantenha o servidor Django rodando no terminal em segundo plano.
 2. Navegue até a pasta `/build/` no repositório.
 3. Execute o aplicativo **`Guiando_Ovelhinha.exe`**.
-4. **Jogue!** Recomendamos simular perfis clínicos: erre de propósito, clique repetidamente na tela (simulando impulsividade) e espere muito tempo para agir (simulando latência de atenção).
-5. Ao concluir o nível, a telemetria é disparada silenciosamente, e o Laudo da Inteligência Artificial aparecerá imediatamente no Painel do Django!
 
 ---
 <div align="center">
