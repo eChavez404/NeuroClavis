@@ -89,5 +89,5 @@ python manage.py migrate
 
 # 5. Inicie a API
 python manage.py runserver
-
-<div align="center"> <i>"A tecnologia só cumpre seu papel quando se torna invisível e resolve problemas reais."</i><br> <b>Neuroclavis - 2026</b> </div> ```
+````
+<div align="center"> <i>"A tecnologia só cumpre seu papel quando se torna invisível e resolve problemas reais."</i><br> <b>Neuroclavis - 2026</b> </div>
