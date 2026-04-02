@@ -10,7 +10,7 @@
 ![OpenAI](https://img.shields.io/badge/AI_Co--Pilot-GPT--4o--mini-412991?style=for-the-badge&logo=openai)
 ![Status](https://img.shields.io/badge/Status-MVP_Completo-success?style=for-the-badge)
 
-*Plataforma de Digital Therapeutics (DTx) que transforma avaliações neuropsicológicas em experiências lúdicas, utilizando telemetria invisível de alta precisão e Inteligência Artificial para gerar laudos clínicos baseados em evidências.*
+*Plataforma de Digital Therapeutics (DTx) que transforma avaliações neuropsicológicas em experiências relatórios comportamentais, utilizando telemetria invisível de alta precisão e Inteligência Artificial para gerar laudos clínicos baseados em evidências.*
 
 </div>
 
