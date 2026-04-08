@@ -6,7 +6,6 @@
 ![Unity](https://img.shields.io/badge/Unity-6-black?style=for-the-badge&logo=unity)
 ![C#](https://img.shields.io/badge/C%23-Arquitetura_Orientada_a_Eventos-239120?style=for-the-badge&logo=c-sharp)
 ![Django](https://img.shields.io/badge/Django-4.2+-092E20?style=for-the-badge&logo=django)
-![Database](https://img.shields.io/badge/Banco_de_Dados-3NF_Normalizado-blue?style=for-the-badge&logo=sqlite)
 ![OpenAI](https://img.shields.io/badge/AI_Co--Pilot-GPT--4o--mini-412991?style=for-the-badge&logo=openai)
 ![Status](https://img.shields.io/badge/Status-MVP_Completo-success?style=for-the-badge)
 
